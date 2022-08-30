@@ -99,8 +99,7 @@ const Feed: React.FC<Props> = (props) => {
               <Video
                 repeat
                 ref={videoRef}
-                // muted={isMuted}
-                muted={true}
+                muted={isMuted}
                 source={{
                   uri: item?.url,
                 }}
