@@ -17,8 +17,10 @@
 
 <p align="center">
 	<img width="200" align="center" src="https://user-images.githubusercontent.com/49821074/187540718-6015d981-df0a-4124-894c-b7a0a7fdba31.png" />  
-	<img width="200" align="center" src="https://user-images.githubusercontent.com/49821074/187541186-40d4f556-f255-4bfe-a73e-9c058701cd3d.png" />  	<img width="200" align="center" src="https://user-images.githubusercontent.com/49821074/187541296-ea058938-510c-4758-9933-27e6d72fd875.png" />  	<img width="200" align="center" src="https://user-images.githubusercontent.com/49821074/125210834-7c204100-e2a2-11eb-8442-c5a438e1a93b.png" />  	<img width="200" align="center" src="https://user-images.githubusercontent.com/49821074/125210835-7cb8d780-e2a2-11eb-96a7-55dfe2506448.png" />  	<img width="200" align="center" src="https://user-images.githubusercontent.com/49821074/125210836-7d516e00-e2a2-11eb-9b34-a5677549f504.png" />  	<img width="200" align="center" src="https://user-images.githubusercontent.com/49821074/125210837-7dea0480-e2a2-11eb-857a-78afd890dc30.png" />	
+	<img width="200" align="center" src="https://user-images.githubusercontent.com/49821074/187541186-40d4f556-f255-4bfe-a73e-9c058701cd3d.png" />  	<img width="200" align="center" src="https://user-images.githubusercontent.com/49821074/187541296-ea058938-510c-4758-9933-27e6d72fd875.png" />  	<img width="200" align="center" src="https://user-images.githubusercontent.com/49821074/187544294-1ef35db6-c337-4fe9-8719-421aa817d138.png" />  	<img width="200" align="center" src="https://user-images.githubusercontent.com/49821074/187544466-b8fca7a0-98f0-4e85-9cd5-f235eb8e2676.png" />
 </p>
+
+[![RECORDING](https://img.youtube.com/vi/6aHwIaCOVXE/0.jpg)](https://www.youtube.com/watch?v=6aHwIaCOVXE)	
 
 </br>
 
@@ -48,6 +50,7 @@ Here is the list of requested features and details done for the challenge
 - All in TypeSript 🎉
 - Latest version of RN, TS and all dependencies
 - Used the latest version of Reanimated 2 API
+- Custom scripts and best practices for formatting, linting and coding
 - Created every component from scratch (reusable and customizable)
 - A fully reusable/customizable smooth & animated carousel
 - A video player for the shorts
@@ -56,6 +59,7 @@ Here is the list of requested features and details done for the challenge
 - A personalized SplashScreen
 - App Icon inspired from logo
 - All styling separated from logic
+- Pixel-perfect implementation (icons, margins, paddings, colors...etc)
 - Data fetched from backend
 - a 100% custom bottomNavBar made from scratch with beautiful gradient colors and effects
 - Gesture handler to pause/play the videos by tapping on it
