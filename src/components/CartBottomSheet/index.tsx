@@ -20,6 +20,7 @@ const CartBottomSheet: React.FC<CartBottomSheetProps> = ({
 }) => {
   const width = Dimensions.get('window').width;
   const [activeIndex, setActiveIndex] = useState(0);
+  const [inCart, setInCart] = useState(false);
 
   const images = [
     {
@@ -191,7 +192,7 @@ const CartBottomSheet: React.FC<CartBottomSheetProps> = ({
         </View>
       </View>
       <View style={styles.footer}>
-        <TouchableOpacity style={styles.videoButton} onPress={onAddToCartPress}>
+        <TouchableOpacity style={styles.videoButton} onPress={() => {}}>
           <View style={styles.innerButton}>
             <VideoCam size={30} name='videocam-outline' color='white' />
             <StylishText
@@ -202,14 +203,26 @@ const CartBottomSheet: React.FC<CartBottomSheetProps> = ({
             </StylishText>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.cartButton} onPress={onAddToCartPress}>
+        <TouchableOpacity
+          style={{
+            ...styles.cartButton,
+            backgroundColor: inCart ? '#169d08' : '#FF1476',
+          }}
+          onPress={() => {
+            // onAddToCartPress();
+            setInCart(true);
+          }}>
           <View style={styles.innerButton}>
-            <Cart size={22} name='shopping-cart' color='white' />
+            <Cart
+              size={22}
+              name={inCart ? 'check' : 'shopping-cart'}
+              color='white'
+            />
             <StylishText
               fontSize={13}
               textType='bold'
               style={styles.cartButtonText}>
-              ADD TO CART
+              {inCart ? 'ADDED TO CART' : 'ADD TO CART'}
             </StylishText>
           </View>
         </TouchableOpacity>

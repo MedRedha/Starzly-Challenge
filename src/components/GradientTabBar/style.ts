@@ -3,6 +3,7 @@ import { StyleSheet, ViewStyle } from 'react-native';
 interface Style {
   gradientStyle: ViewStyle;
   navBarIcon: ViewStyle;
+  badge: ViewStyle;
 }
 
 export default StyleSheet.create<Style>({
@@ -23,5 +24,16 @@ export default StyleSheet.create<Style>({
     paddingBottom: 20,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  badge: {
+    width: 20,
+    height: 20,
+    right: 10,
+    top: 0,
+    position: 'absolute',
+    borderRadius: 50,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'red',
   },
 });

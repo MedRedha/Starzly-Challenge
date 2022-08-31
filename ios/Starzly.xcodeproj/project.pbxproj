@@ -34,6 +34,8 @@
 		8F0E70AA28BC4FF100EC585F /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8F8B1E8B28BC4AF300A6E2C9 /* Octicons.ttf */; };
 		8F0E70AB28BC500000EC585F /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8F8B1E8528BC4AF200A6E2C9 /* SimpleLineIcons.ttf */; };
 		8F0E70AC28BC500200EC585F /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8F8B1E8F28BC4AF300A6E2C9 /* Zocial.ttf */; };
+		8F1FC68928BFB8B800D7805B /* liblottie-react-native.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F1FC68828BFB8B800D7805B /* liblottie-react-native.a */; };
+		8F1FC68B28BFB8C100D7805B /* liblottie-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F1FC68A28BFB8C100D7805B /* liblottie-ios.a */; };
 		FDD71FEBE2F2420389E9FE8E /* Vibur.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D442AFDD88714A5AA0C33E80 /* Vibur.ttf */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +69,8 @@
 		73E29947F35948878CB1B482 /* Urbanist-Thin.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Urbanist-Thin.ttf"; path = "../src/assets/fonts/Urbanist-Thin.ttf"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Starzly/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-Starzly-StarzlyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Starzly-StarzlyTests.release.xcconfig"; path = "Target Support Files/Pods-Starzly-StarzlyTests/Pods-Starzly-StarzlyTests.release.xcconfig"; sourceTree = "<group>"; };
+		8F1FC68828BFB8B800D7805B /* liblottie-react-native.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "liblottie-react-native.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8F1FC68A28BFB8C100D7805B /* liblottie-ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "liblottie-ios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F57381D6D2E47FFB7E73860 /* Urbanist-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Urbanist-Regular.ttf"; path = "../src/assets/fonts/Urbanist-Regular.ttf"; sourceTree = "<group>"; };
 		8F8B1E8428BC4AF200A6E2C9 /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MaterialCommunityIcons.ttf; sourceTree = "<group>"; };
 		8F8B1E8528BC4AF200A6E2C9 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SimpleLineIcons.ttf; sourceTree = "<group>"; };
@@ -102,6 +106,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F1FC68B28BFB8C100D7805B /* liblottie-ios.a in Frameworks */,
+				8F1FC68928BFB8B800D7805B /* liblottie-react-native.a in Frameworks */,
 				0C80B921A6F3F58F76C31292 /* libPods-Starzly.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -143,6 +149,8 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8F1FC68A28BFB8C100D7805B /* liblottie-ios.a */,
+				8F1FC68828BFB8B800D7805B /* liblottie-react-native.a */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				5DCACB8F33CDC322A6C60F78 /* libPods-Starzly.a */,
 				19F6CBCC0A4E27FBF8BF4A61 /* libPods-Starzly-StarzlyTests.a */,

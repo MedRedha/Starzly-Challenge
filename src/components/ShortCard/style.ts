@@ -22,13 +22,11 @@ export default StyleSheet.create<Style>({
     flexDirection: 'row',
     paddingHorizontal: 18,
     justifyContent: 'space-between',
-    backgroundColor: 'rgba(0,0,0,0.5)',
   },
   details: {
-    width: 115,
     height: '60%',
-    maxWidth: 120,
-    marginRight: 30,
+    maxWidth: 150,
+    marginRight: 6,
     flexDirection: 'column',
     alignItems: 'flex-start',
     justifyContent: 'space-around',
@@ -40,7 +38,6 @@ export default StyleSheet.create<Style>({
     borderRadius: 50,
     marginVertical: 12,
     alignItems: 'center',
-    borderColor: '#FF1476',
     justifyContent: 'center',
   },
   cartButton: {
@@ -51,8 +48,8 @@ export default StyleSheet.create<Style>({
     backgroundColor: '#FF1476',
   },
   cartButtonText: {
-    padding: 8,
-    width: '80%',
+    padding: 10,
+    width: '100%',
     textAlign: 'center',
   },
   bar: {
@@ -69,6 +66,7 @@ export default StyleSheet.create<Style>({
     shadowOffset: { width: 0, height: 2 },
   },
   detailText: {
+    width: '100%',
     flexWrap: 'wrap',
   },
 });

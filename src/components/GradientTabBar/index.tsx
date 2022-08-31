@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
-import { TouchableOpacity, useColorScheme } from 'react-native';
+import { Animated, TouchableOpacity, useColorScheme, View } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
 import Colors from '../../theme/Colors';
@@ -12,14 +12,27 @@ type GradientProps = {
   state: any;
   descriptors: any;
   navigation: any;
+  badge?: boolean;
+  number?: number;
 };
 
 const GradientTabBar: React.FC<GradientProps> = ({
   state,
   descriptors,
   navigation,
+  badge = true,
+  number,
 }) => {
   const theme = useColorScheme();
+  const tiltAnim = new Animated.Value(1);
+
+  useEffect(() => {
+    Animated.timing(tiltAnim, {
+      toValue: 0,
+      duration: 400,
+      useNativeDriver: true,
+    }).start();
+  }, [number]);
 
   const screenOptions = (route, focused) => {
     let iconName;
@@ -44,12 +57,31 @@ const GradientTabBar: React.FC<GradientProps> = ({
         break;
     }
 
+    const spin = tiltAnim.interpolate({
+      inputRange: [0, 1],
+      outputRange: ['0deg', '-30deg'],
+    });
+
     return (
-      <Icon
-        name={iconName}
-        size={27}
-        color={focused ? Colors[theme].red : Colors[theme].white}
-      />
+      <>
+        {badge && route.name === 'Cart' && number > 0 && (
+          <View style={styles.badge}>
+            <StylishText textType='bold' fontSize={14}>
+              {number}
+            </StylishText>
+          </View>
+        )}
+        <Animated.View
+          style={{
+            transform: [{ rotateZ: route.name === 'Cart' ? spin : '0deg' }],
+          }}>
+          <Icon
+            name={iconName}
+            size={27}
+            color={focused ? Colors[theme].red : Colors[theme].white}
+          />
+        </Animated.View>
+      </>
     );
   };
 

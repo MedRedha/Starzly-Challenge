@@ -25,12 +25,21 @@ import ShortCard from '../../components/ShortCard';
 import { BottomSheetModal } from '@gorhom/bottom-sheet';
 import CartBottomSheet from '../../components/CartBottomSheet';
 import CustomBackdrop from '../../components/CustomBackdrop';
+import FadeInOut from '../../components/FadeInOut';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import UnmuteIcon from 'react-native-vector-icons/Octicons';
+import LottieView from 'lottie-react-native';
 import axios from 'axios';
 
-interface Props {}
+interface Props {
+  setBadgeNum?: (number) => void;
+  setBadge?: (boolean) => void;
+  number?: number;
+}
 
-const Feed: React.FC<Props> = (props) => {
+const Feed: React.FC<Props> = ({ setBadgeNum, setBadge, number }) => {
   const videoRef = useRef();
+  const likeRef = useRef();
   const theme = useColorScheme();
   const width = Dimensions.get('window').width;
   const baseUrl = 'https://stg.starzly.io/api/';
@@ -41,6 +50,8 @@ const Feed: React.FC<Props> = (props) => {
   const bottomSheetModalRef = useRef<BottomSheetModal>(null);
   const [isManuallyPaused, setIsManuallyPaused] = useState<Boolean>(false);
   const [videos, setVideos] = useState([]);
+  const [visible, setVisible] = useState(false);
+  const [type, setType] = useState('media');
   const [limit] = useState(10);
 
   const fetchData = async (limit) => {
@@ -62,6 +73,18 @@ const Feed: React.FC<Props> = (props) => {
   const handleCloseModalPress = useCallback(() => {
     bottomSheetModalRef.current?.close();
   }, []);
+
+  const handleAnimation = (timing) => {
+    likeRef?.current?.play();
+    setVisible(true);
+    setTimeout(() => setVisible(false), timing);
+  };
+
+  const handlePlayPause = () => {
+    setType('media');
+    setIsManuallyPaused(!isManuallyPaused);
+    handleAnimation(500);
+  };
 
   return (
     <>
@@ -92,10 +115,45 @@ const Feed: React.FC<Props> = (props) => {
           scrollAnimationDuration={1000}
           renderItem={({ index, item }) => (
             <>
-              <TouchableWithoutFeedback
-                onPress={() => setIsManuallyPaused(!isManuallyPaused)}>
+              <TouchableWithoutFeedback onPress={() => handlePlayPause()}>
                 <View style={styles.invisibleTouch}></View>
               </TouchableWithoutFeedback>
+              <FadeInOut visible={visible} style={styles.fadeInOut}>
+                {type === 'like' ? (
+                  <LottieView
+                    speed={2}
+                    ref={likeRef}
+                    loop={false}
+                    autoPlay={true}
+                    source={require('./../../assets/animation/Love.json')}
+                    style={{
+                      ...styles.lottie,
+                      display: visible ? 'flex' : 'none',
+                    }}
+                  />
+                ) : type === 'media' ? (
+                  <Icon
+                    size={100}
+                    color='white'
+                    name={isManuallyPaused ? 'pause' : 'play'}
+                    style={{ opacity: 0.9 }}
+                  />
+                ) : isMuted ? (
+                  <Icon
+                    size={100}
+                    color='white'
+                    name={'volume-mute'}
+                    style={{ opacity: 0.7 }}
+                  />
+                ) : (
+                  <UnmuteIcon
+                    size={100}
+                    color='white'
+                    name={'unmute'}
+                    style={{ opacity: 0.7 }}
+                  />
+                )}
+              </FadeInOut>
               <Video
                 repeat
                 ref={videoRef}
@@ -119,19 +177,25 @@ const Feed: React.FC<Props> = (props) => {
                   />
                   {isLoading && (
                     <ActivityIndicator
-                      style={styles.loading}
-                      color='white'
                       size='large'
+                      color='white'
+                      style={styles.loading}
                     />
                   )}
                   <ShortSideBar
-                    avatar={item?.talent?.avatar_url}
-                    setIsMuted={setIsMuted}
                     muted={isMuted}
+                    setType={setType}
+                    likeRef={likeRef}
+                    setIsMuted={setIsMuted}
+                    avatar={item?.talent?.avatar_url}
+                    handleAnimation={handleAnimation}
                   />
                   <ShortCard
                     product={item?.talent}
                     onAddToCartPress={handlePresentModalPress}
+                    setBadge={setBadge}
+                    setBadgeNum={setBadgeNum}
+                    number={number}
                   />
                 </SafeAreaView>
                 <BottomSheetModal
@@ -144,9 +208,9 @@ const Feed: React.FC<Props> = (props) => {
                   style={styles.bottomSheet}
                   handleStyle={{ display: 'none' }}>
                   <CartBottomSheet
+                    talent={item?.talent}
                     onClosePress={handleCloseModalPress}
                     onAddToCartPress={handleCloseModalPress}
-                    talent={item?.talent}
                   />
                 </BottomSheetModal>
               </Video>

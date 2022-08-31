@@ -166,7 +166,6 @@ export default StyleSheet.create<Style>({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#FF1476',
   },
   videoButton: {
     width: '35%',

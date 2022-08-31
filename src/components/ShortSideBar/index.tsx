@@ -11,12 +11,18 @@ interface ShortSideBarProps {
   avatar?: string;
   muted?: Boolean;
   setIsMuted?: (Boolean) => void;
+  handleAnimation?: (number) => void;
+  setType?: (string) => void;
+  likeRef?: any;
 }
 
 const ShortSideBar: React.FC<ShortSideBarProps> = ({
   avatar,
   muted,
   setIsMuted,
+  handleAnimation,
+  setType,
+  likeRef,
 }) => {
   const [liked, setLiked] = useState<boolean>(false);
   const [numLikes, setNumLikes] = useState<number>(
@@ -24,12 +30,15 @@ const ShortSideBar: React.FC<ShortSideBarProps> = ({
   );
 
   const handleLikePost = () => {
-    if (!liked) {
-      setLiked(!liked);
-      setNumLikes(numLikes + 1);
-    } else {
+    setType('like');
+    if (liked) {
       setLiked(!liked);
       setNumLikes(numLikes - 1);
+    } else {
+      handleAnimation(2200);
+      setLiked(!liked);
+      setNumLikes(numLikes + 1);
+      likeRef?.current?.play();
     }
   };
 
@@ -56,12 +65,16 @@ const ShortSideBar: React.FC<ShortSideBarProps> = ({
       />
       <SideBarButton
         type='button'
-        onButtonPress={() => setIsMuted(!muted)}
+        onButtonPress={() => {
+          setType('mute');
+          setIsMuted(!muted);
+          handleAnimation(500);
+        }}
         icon={
           muted ? (
-            <Icon4 name='unmute' color='white' size={22} />
-          ) : (
             <Icon3 name='volume-mute' color='white' size={22} />
+          ) : (
+            <Icon4 name='unmute' color='white' size={22} />
           )
         }
       />
